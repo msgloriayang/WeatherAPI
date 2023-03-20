@@ -28,6 +28,7 @@ function getForecast(city) {
     .then(data => {
     data.list.forEach(forecastData => {
       const forecastList = data.list;
+      const currentDate = new Date();
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
       const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
       const iconCode = forecastData.weather[0].icon;
@@ -36,10 +37,10 @@ function getForecast(city) {
       const humidity = forecastData.main.humidity;
       const forecastDiv = document.getElementById("forecast");
     forecastDiv.innerHTML = `${forecastList}
-    ${currentDate.toLocaleDateString()}
-    <img src="https://openweathermap.org/img/w/${iconCode}.png">
-    Temp: ${temp}&deg;C
-    Wind: ${windSpeed} MPH
+    ${formattedDate.toLocaleDateString()}<br>
+    <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
+    Temp: ${temp}&deg;C<br>
+    Wind: ${windSpeed} MPH<br>
     Humidity: ${humidity}%`;
     forecastDiv.innerHTML += forecastList;
   })
