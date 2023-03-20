@@ -6,11 +6,11 @@ var searchHistory = document.querySelector('#search-history');
 
 // this is to retrieve the weather and have it show on index.html
 function getWeather(city) {
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`, {
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`), {
     headers: {
         'Authorization': `Bearer ${apiKey1}`
     }
-}).then(response => response.json())
+}.then(response => response.json())
   .then(data => {
     const temp = Math.round(data.main.temp - 273.15);
     const location = data.name;
@@ -27,11 +27,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 
 // this is to retrieve weather 5-day forecast
 function getForecast(city) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`, {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`), {
         headers: {
             'Authorization': `Bearer ${apiKey2}`
         }
-    }).then(response => response.json())
+    }.then(response => response.json())
     .then(data => {
     data.list.forEach(forecastData => {
       const forecastList = data.list;
@@ -52,13 +52,6 @@ function getForecast(city) {
   })
 .catch(error => console.log(error));
 })
-
-// this is where users can search for a city
-searchForm.addEventListener("submit", event => {
-    event.preventDefault();
-    const city = cityInput.value.trim();
-    getWeather(city);
-  });
 
 //   this is to enable search history to show up in html
   function saveSearchHistory(city) {
@@ -87,3 +80,10 @@ searchForm.addEventListener("submit", event => {
   
   loadSearchHistory();
 }
+
+// this is where users can search for a city
+searchForm.addEventListener("submit", event => {
+    event.preventDefault();
+    const city = cityInput.value.trim();
+    getWeather(city);
+  });
