@@ -7,7 +7,11 @@ function getCords(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-      console.log(data)
+        const lat = data[0].lat;
+        const lon = data[0].lon;
+        getWeather(city, lat, lon);
+        getForecast(city, lat, lon);
+      }) 
     }) 
     .catch(error => console.log(error));
   }
