@@ -1,4 +1,4 @@
-var APIKey = "eb253f48b78c5f91d425a9840bd0d476";
+var apiKey = "eb253f48b78c5f91d425a9840bd0d476";
 var city = "Minneapolis";
 
 fetch("https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}")
