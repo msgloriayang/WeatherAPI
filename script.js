@@ -21,6 +21,35 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
   .catch(error => console.log(error));
 }
 
+// this is to retrieve weather 5-day forecast
+function getForecast(city) {
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+    .then(response => response.json())
+    .then(data => {
+    const forecastDiv = document.getElementById("forecast");
+    forecastDiv.innerHTML = "";
+    data.list.forEach(forecastData => {
+      const forecastList = data.list;
+      const formattedDate = { month: 'numeric', day: 'numeric', year: 'numeric' };
+      const iconCode = forecastData.weather[0].icon;
+      const temp = Math.round(forecastData.main.temp - 273.15);
+      const windSpeed = forecastData.wind.speed;
+      const humidity = forecastData.main.humidity;
+      const forecastItem = `
+      <div class="forecast-item">
+      <div>${forecastList}</div>
+        <div>${formattedDate.toLocaleDateString()}</div>
+        <img src="https://openweathermap.org/img/w/${iconCode}.png">
+        <div>Temp: ${temp}&deg;C</div>
+        <div>Wind: ${windSpeed} m/s</div>
+        <div>Humidity: ${humidity}%</div>
+      </div>
+    `;
+    forecastDiv.innerHTML += forecastItem;
+  })
+.catch(error => console.log(error));
+})
+
 // this is where users can search for a city
 searchForm.addEventListener("submit", event => {
     event.preventDefault();
@@ -54,3 +83,4 @@ searchForm.addEventListener("submit", event => {
   }
   
   loadSearchHistory();
+}
