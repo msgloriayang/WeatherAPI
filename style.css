@@ -9,13 +9,18 @@ body {
 }
 
 .leftContainer {
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
     font-size: 10px;
     display: flex;
-    flex-wrap: wrap;
+  }
+
+  .searchForm {
+    flex: 1;
   }
   
   .middleContainer {
+    font-family: Arial, Helvetica, sans-serif;
     display: flex;
     flex: 0 0 50%;
     margin-top: -14%;
@@ -23,10 +28,12 @@ body {
   }
 
   p {
+    font-family: Arial, Helvetica, sans-serif;
     color: black;
   }
 
   button {
+    font-family: Arial, Helvetica, sans-serif;
     background-color:cornflowerblue;
     border-color: cornflowerblue;
     color: white;
