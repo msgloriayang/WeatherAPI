@@ -22,7 +22,6 @@ body {
   .middleContainer {
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
-    flex: 0 0 50%;
     padding-left: 250px;
   }
 
