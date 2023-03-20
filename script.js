@@ -82,10 +82,11 @@ function getForecast(city) {
   
   loadSearchHistory();
 }
-
 // this is where users can search for a city
 searchForm.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value.trim();
     getCords(city);
+    getWeather(city);
+    getForecast(city);
   });
