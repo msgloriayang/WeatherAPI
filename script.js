@@ -8,9 +8,7 @@ function getWeather(city) {
 fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
   .then(response => response.json())
   .then(data => {
-    // const cityName = data.name;
     const temp = Math.round(data.main.temp - 273.15);
-    const condition = data.weather[0].description;
     const location = data.name;
     const windSpeed = data.wind.speed;
     const humidity = data.main.humidity;
