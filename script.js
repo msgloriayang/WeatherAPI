@@ -12,7 +12,6 @@ function getCords(city) {
         getWeather(city, lat, lon);
         getForecast(city, lat, lon);
       }) 
-    }) 
     .catch(error => console.log(error));
   }
 
