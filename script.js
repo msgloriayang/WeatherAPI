@@ -42,7 +42,6 @@ function getForecast(city) {
     Temp: ${temp}&deg;C<br>
     Wind: ${windSpeed} MPH<br>
     Humidity: ${humidity}%`;
-    forecastDiv.innerHTML += forecastList;
   })
 .catch(error => console.log(error));
 })
