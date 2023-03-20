@@ -16,7 +16,7 @@ function getCords(city) {
   }
 
 // this is to retrieve the weather and have it show on index.html
-function getWeather(city) {
+function getWeather(city, lat, lon) {
 fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
 .then(response => response.json())
   .then(data => {
@@ -34,7 +34,7 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&un
 }
 
 // this is to retrieve weather 5-day forecast
-function getForecast(city) {
+function getForecast(city, lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
