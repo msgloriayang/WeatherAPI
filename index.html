@@ -19,20 +19,20 @@
        <div class="leftContainer">
         <div class="searchForm">
         <h1>Search for a City:</h1>
-        <input type="searchForm"><br>
-        <button>Search</button>
-        </div>
-        <div id="weather"></div>
-      </div>
-      </section>
+    
+        <form>
+        <input type="text" id="city-input" placeholder="Enter a city">
+        <button type="submit" id="searchButton">Search</button>
+        </form>
 
-      <div class="middleContainer">
-        <p id="weatherApi">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. At repellat ratione impedit perferendis pariatur tempora numquam quam, id distinctio, temporibus praesentium quasi ducimus a? Earum incidunt voluptatum accusamus libero quisquam.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita explicabo iusto debitis sit quos voluptas sunt aspernatur fugiat doloremque? Iure iusto sint esse ex dolorem est laudantium error eligendi saepe.
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Enim dicta consequuntur molestiae officiis? Suscipit eaque itaque mollitia placeat quis amet minima tempore impedit, sint quam pariatur optio. Commodi, rem modi!
-        </p>
-        </div>
+        <!-- this is where the search history will show up -->
+        <ul id="searchHistory"></ul>
+        
+        <div class="middleContainer">
+            <div id="weather">
+                <h2><span id="city-name"></span> <span id="date"></span></h2>
+            </div>
+
     </div>
 
 </body>
