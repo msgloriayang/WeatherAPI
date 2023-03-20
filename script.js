@@ -1,12 +1,16 @@
-var apiKey = `eb253f48b78c5f91d425a9840bd0d476`;
+var apiKey1 = `d412d5bfa96db26b9c95851d2e6e8b6d`;
+var apiKey2 = `eb253f48b78c5f91d425a9840bd0d476`;
 var searchForm = document.querySelector("form");
 var cityInput = document.querySelector("#city-input");
 var searchHistory = document.querySelector('#search-history');
 
 // this is to retrieve the weather and have it show on index.html
 function getWeather(city) {
-fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
-  .then(response => response.json())
+fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`, {
+    headers: {
+        'Authorization': `Bearer ${apiKey1}`
+    }
+}).then(response => response.json())
   .then(data => {
     const temp = Math.round(data.main.temp - 273.15);
     const location = data.name;
@@ -23,8 +27,11 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}
 
 // this is to retrieve weather 5-day forecast
 function getForecast(city) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
-    .then(response => response.json())
+    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}`, {
+        headers: {
+            'Authorization': `Bearer ${apiKey2}`
+        }
+    }).then(response => response.json())
     .then(data => {
     data.list.forEach(forecastData => {
       const forecastList = data.list;
