@@ -1,7 +1,7 @@
 var APIKey = "eb253f48b78c5f91d425a9840bd0d476";
 var city = "Minneapolis";
 
-fetch('https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`)
+fetch("https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}")
   .then(response => response.json())
   .then(data => {
     const temp = Math.round(data.main.temp - 273.15);
