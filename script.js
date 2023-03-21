@@ -20,6 +20,7 @@ function getWeather(city, lat, lon) {
 fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
 .then(response => response.json())
   .then(data => {
+    console.log(data);
     const temp = Math.round(data.main.temp - 273.15);
     const location = data.name;
     const windSpeed = data.wind.speed;
@@ -38,9 +39,10 @@ function getForecast(city, lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
     .then(response => response.json())
     .then(data => {
-    data.list.forEach(forecastData => {
+      const currentDate = new Date(data.list[0].dt_txt);
+      console.log(currentDate)
+      data.list.forEach(forecastData => {
       const forecastList = data.list;
-      const currentDate = new Date();
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
       const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
       const iconCode = forecastData.weather[0].icon;
@@ -49,14 +51,15 @@ function getForecast(city, lat, lon) {
       const humidity = forecastData.main.humidity;
       const forecastDiv = document.getElementById("forecast");
     forecastDiv.innerHTML = `${forecastList}
-    ${formattedDate.toLocaleDateString()}<br>
+    ${formattedDate}<br>
     <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
     Temp: ${temp}&deg;C<br>
     Wind: ${windSpeed} MPH<br>
     Humidity: ${humidity}%`;
   })
-.catch(error => console.log(error));
 })
+.catch(error => console.log(error));
+}
 
 //   this is to enable search history to show up in html
   function saveSearchHistory(city) {
@@ -82,14 +85,12 @@ function getForecast(city, lat, lon) {
       }
     }
   }
-  
   loadSearchHistory();
-}
 // this is where users can search for a city
 searchForm.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value.trim();
     getCords(city);
-    getWeather(city);
-    getForecast(city);
+    // getWeather(city);
+    // getForecast(city);
   });
