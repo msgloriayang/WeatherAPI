@@ -50,7 +50,7 @@ function getForecast(city, lat, lon) {
       const windSpeed = forecastData.wind.speed;
       const humidity = forecastData.main.humidity;
       const forecastDiv = document.getElementById("forecast");
-    forecastDiv.innerHTML = `${forecastList}
+      forecastDiv.innerHTML = `${JSON.stringify(forecastList)}<br>
     ${formattedDate}<br>
     <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
     Temp: ${temp}&deg;C<br>
