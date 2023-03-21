@@ -42,7 +42,7 @@ function getForecast(city, lat, lon) {
       const currentDate = new Date(data.list[0].dt_txt);
       console.log(currentDate)
       data.list.forEach(forecastData => {
-      const forecastList = data.list;
+      const forecastList = data.list[0].main;
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
       const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
       const iconCode = forecastData.weather[0].icon;
