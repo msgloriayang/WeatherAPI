@@ -91,6 +91,4 @@ searchForm.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value.trim();
     getCords(city);
-    // getWeather(city);
-    // getForecast(city);
   });
