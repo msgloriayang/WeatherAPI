@@ -50,12 +50,25 @@ function getForecast(city, lat, lon) {
       const windSpeed = forecastData.wind.speed;
       const humidity = forecastData.main.humidity;
       const forecastDiv = document.getElementById("forecast");
-      forecastDiv.innerHTML = `${JSON.stringify(forecastList)}<br>
-    ${formattedDate}<br>
-    <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
-    Temp: ${temp}&deg;C<br>
-    Wind: ${windSpeed} MPH<br>
-    Humidity: ${humidity}%`;
+      forecastDiv.innerHTML = `${JSON.stringify(forecastList)}`
+      for (let i = 0; i < 5; i++) {
+      forecastDiv.innerHTML = `
+        <div>
+         <h4>    
+            ${formattedDate}
+          </h4>
+          <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
+          <p>
+          Temp: ${temp}&deg;C
+          </p><br>
+          <p>Wind: ${windSpeed} MPH
+          </p><br>
+          <p>
+          Humidity: ${humidity}%;
+          </p>
+        </div>
+      `
+    }
   })
 })
 .catch(error => console.log(error));
