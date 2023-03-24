@@ -17,7 +17,7 @@ function getCords(city) {
 
 // this is to retrieve the weather and have it show on index.html
 function getWeather(city, lat, lon) {
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&cnt=5&appid=${apiKey}`)
 .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -42,7 +42,7 @@ function getForecast(city, lat, lon) {
       const currentDate = new Date(data.list[0].dt_txt);
       console.log(currentDate)
       data.list.forEach(forecastData => {
-      const forecastList = data.list[0].main;
+      const forecastList = data.list[0].main; 
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
       const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
       const iconCode = forecastData.weather[0].icon;
@@ -64,7 +64,7 @@ function getForecast(city, lat, lon) {
           <p>Wind: ${windSpeed} MPH
           </p><br>
           <p>
-          Humidity: ${humidity}%;
+          Humidity: ${humidity}%
           </p>
         </div>
       `
