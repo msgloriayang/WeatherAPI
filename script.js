@@ -47,7 +47,7 @@ function getForecast(city, lat, lon) {
   .then(data => {
     let currentDate = new Date(data.list[0].dt_txt);
     const forecastDiv = document.getElementById("forecast");
-    forecastDiv.innerHTML = ""; // Clear the div before adding new content
+    forecastDiv.innerHTML = "";
     for (let i = 0; i < 5; i++) {
       const forecastData = data.list[i];
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
@@ -89,9 +89,10 @@ function getForecast(city, lat, lon) {
       for (const city of searchHistory) {
         const li = document.createElement("li");
         li.textContent = city;
-      }
-    }
-  }
+        searchHistory = document.querySelector("#searchHistory").appendChild(li);
+} 
+} 
+} 
   loadSearchHistory();
 
 searchForm.addEventListener("submit", event => {
