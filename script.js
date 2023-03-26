@@ -1,7 +1,7 @@
 var apiKey = `eb253f48b78c5f91d425a9840bd0d476`;
 var searchForm = document.querySelector("form");
 var cityInput = document.querySelector("#city-input");
-var searchHistory = document.querySelector('#search-history');
+var searchHistory = document.querySelector("searchHistory");
 
 var listOfCities = [];
 if(localStorage.getItem("history")) {
@@ -71,7 +71,6 @@ function getForecast(city, lat, lon) {
   .catch(error => console.log(error));
 }
 
-//   this is to enable search history to show up in html
   function saveSearchHistory(city) {
     let searchHistory = localStorage.getItem("searchHistory");
     if (!searchHistory) {
@@ -90,7 +89,6 @@ function getForecast(city, lat, lon) {
       for (const city of searchHistory) {
         const li = document.createElement("li");
         li.textContent = city;
-        searchHistoryList.appendChild(li);
       }
     }
   }
