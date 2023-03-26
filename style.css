@@ -1,60 +1,60 @@
 .topSection {
-    flex-direction: column;
-    background-color: darkslateblue;
+  flex-direction: column;
+  background-color: darkslateblue;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
 }
 
 .parentContainer {
-  display: flex;
-  flex-direction: row;
+display: flex;
+flex-direction: row;
 }
 
 .leftContainer {
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-    font-size: 10px;
-    width: 30%;
-    display: flex;
-    flex-direction: column;
-  }
-
-.rightContainer {
   font-family: Arial, Helvetica, sans-serif;
   color: black;
   font-size: 10px;
-  width: 70%;
+  width: 30%;
   display: flex;
   flex-direction: column;
-  }
+}
 
-  .currentDay {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 0;
-  }
+.rightContainer {
+font-family: Arial, Helvetica, sans-serif;
+color: black;
+font-size: 10px;
+width: 70%;
+display: flex;
+flex-direction: column;
+}
 
-  .fiveDay {
-    font-family: Arial, Helvetica, sans-serif;
-    padding-top: 5%;
-  }
+.currentDay {
+  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 0;
+}
 
-  #forecast {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+.fiveDay {
+  font-family: Arial, Helvetica, sans-serif;
+  padding-top: 5%;
+}
 
-  p {
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
-  }
+#forecast {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
 
-  button {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color:cornflowerblue;
-    border-color: cornflowerblue;
-    color: white;
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+button {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:cornflowerblue;
+  border-color: cornflowerblue;
+  color: white;
 }
