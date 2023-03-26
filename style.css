@@ -16,13 +16,17 @@ body {
     flex-direction: column;
   }
 
-  .searchForm {
-    flex: 1;
+.rightContainer {
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
   }
-  
+
   .currentDay {
     font-family: Arial, Helvetica, sans-serif;
-    display: flex;
+    margin-top: 0;
     padding-left: 250px;
   }
 
