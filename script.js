@@ -3,6 +3,11 @@ var searchForm = document.querySelector("form");
 var cityInput = document.querySelector("#city-input");
 var searchHistory = document.querySelector('#search-history');
 
+var listOfCities = [];
+if(localStorage.getItem("history")) {
+    listOfCities = JSON.parse(localStorage.getItem("history"))
+}
+
 function getCords(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${apiKey}`)
     .then(response => response.json())
@@ -15,9 +20,8 @@ function getCords(city) {
     .catch(error => console.log(error));
   }
 
-// this is to retrieve the weather and have it show on index.html
 function getWeather(city, lat, lon) {
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&cnt=5&appid=${apiKey}`)
+fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
 .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -34,7 +38,6 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&un
   .catch(error => console.log(error));
 }
 
-// this is to retrieve weather 5-day forecast
 function getForecast(city, lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
     .then(response => response.json())
@@ -64,7 +67,7 @@ function getForecast(city, lat, lon) {
           <p>Wind: ${windSpeed} MPH
           </p><br>
           <p>
-          Humidity: ${humidity}%
+          Humidity: ${humidity}%;
           </p>
         </div>
       `
