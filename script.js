@@ -21,7 +21,7 @@ function getCords(city) {
   }
 
 function getWeather(city, lat, lon) {
-fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+fetch(`https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={apiKey}`)
 .then(response => response.json())
   .then(data => {
     console.log(data);
@@ -35,8 +35,8 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&un
     const weatherDiv = document.getElementById("weather");
     weatherDiv.innerHTML = `${JSON.stringify(forecastList)}`
       for (let i = 0; i < 5; i++) {
-      weatherDiv.innerHTML = `${location} (${formattedDate})<br><br>
-      Temp: ${temp}&deg;C<br><br> Wind: ${windSpeed} MPH<br><br> 
+      weatherDiv.innerHTML = `${location} (${formattedDate})<br>
+      Temp: ${temp}&deg;C<br> Wind: ${windSpeed} MPH<br>
       Humidity: ${humidity}%`
 }})
   .catch(error => console.log(error));
@@ -59,7 +59,7 @@ function getForecast(city, lat, lon) {
       const forecastDiv = document.getElementById("forecast");
       forecastDiv.innerHTML = `${JSON.stringify(forecastList)}`
       for (let i = 0; i < 5; i++) {
-      forecastDiv.innerHTML = `
+      forecastDiv.innerHTML += `
         <div>
          <h4>    
             ${formattedDate}
