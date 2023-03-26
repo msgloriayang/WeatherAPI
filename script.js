@@ -41,42 +41,33 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&uni
 }
 
 function getForecast(city, lat, lon) {
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
-    .then(response => response.json())
-    .then(data => {
-      const currentDate = new Date(data.list[0].dt_txt);
-      console.log(currentDate)
-      data.list.forEach(forecastData => {
-      const forecastList = data.list[0].main; 
+  fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`)
+  .then(response => response.json())
+  .then(data => {
+    let currentDate = new Date(data.list[0].dt_txt);
+    const forecastDiv = document.getElementById("forecast");
+    forecastDiv.innerHTML = ""; // Clear the div before adding new content
+    for (let i = 0; i < 5; i++) {
+      const forecastData = data.list[i];
       const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
       const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
       const iconCode = forecastData.weather[0].icon;
       const temp = Math.round(forecastData.main.temp - 273.15);
       const windSpeed = forecastData.wind.speed;
       const humidity = forecastData.main.humidity;
-      const forecastDiv = document.getElementById("forecast");
-      forecastDiv.innerHTML = `${JSON.stringify(forecastList)}`
-      for (let i = 0; i < 5; i++) {
       forecastDiv.innerHTML += `
         <div>
-         <h4>    
-            ${formattedDate}
-          </h4>
+          <h4>${formattedDate}</h4>
           <img src="https://openweathermap.org/img/w/${iconCode}.png"><br>
-          <p>
-          Temp: ${temp}&deg;C
-          </p><br>
-          <p>Wind: ${windSpeed} MPH
-          </p><br>
-          <p>
-          Humidity: ${humidity}%;
-          </p>
+          <p>Temp: ${temp}&deg;C</p><br>
+          <p>Wind: ${windSpeed} MPH</p><br>
+          <p>Humidity: ${humidity}%</p>
         </div>
-      `
+      `;
+      currentDate.setDate(currentDate.getDate() + 1); // Increment the date by one day
     }
   })
-})
-.catch(error => console.log(error));
+  .catch(error => console.log(error));
 }
 
 //   this is to enable search history to show up in html
