@@ -33,8 +33,9 @@ fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&uni
     const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
     const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
     const weatherDiv = document.getElementById("weather");
-      weatherDiv.innerHTML = `${location} (${formattedDate})<br>
-      Temp: ${temp}&deg;C<br> Wind: ${windSpeed} MPH<br>
+      weatherDiv.innerHTML = `<h1>${location} (${formattedDate})</h1><br>
+      Temp: ${temp}&deg;C<br><br>
+      Wind: ${windSpeed} MPH<br><br>
       Humidity: ${humidity}%`
 })
   .catch(error => console.log(error));
