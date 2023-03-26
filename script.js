@@ -29,12 +29,16 @@ fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&un
     const location = data.name;
     const windSpeed = data.wind.speed;
     const humidity = data.main.humidity;
-    const weatherDiv = document.getElementById("weather");
     const currentDate = new Date();
     const dateOptions = { month: 'numeric', day: 'numeric', year: 'numeric' };
     const formattedDate = currentDate.toLocaleDateString('en-US', dateOptions);
-    weatherDiv.innerHTML = `${location} (${formattedDate})<br><br>Temp: ${temp}&deg;C<br><br> Wind: ${windSpeed} MPH<br><br> Humidity: ${humidity}%`;
-})
+    const weatherDiv = document.getElementById("weather");
+    weatherDiv.innerHTML = `${JSON.stringify(forecastList)}`
+      for (let i = 0; i < 5; i++) {
+      weatherDiv.innerHTML = `${location} (${formattedDate})<br><br>
+      Temp: ${temp}&deg;C<br><br> Wind: ${windSpeed} MPH<br><br> 
+      Humidity: ${humidity}%`
+}})
   .catch(error => console.log(error));
 }
 
