@@ -87,7 +87,6 @@ function getForecast(city, lat, lon) {
     let searchHistory = localStorage.getItem("searchHistory");
     if (searchHistory) {
       searchHistory = JSON.parse(searchHistory);
-      const searchHistoryList = document.querySelector("#search-history");
       for (const city of searchHistory) {
         const li = document.createElement("li");
         li.textContent = city;
@@ -96,9 +95,21 @@ function getForecast(city, lat, lon) {
     }
   }
   loadSearchHistory();
-// this is where users can search for a city
+
 searchForm.addEventListener("submit", event => {
     event.preventDefault();
     const city = cityInput.value.trim();
     getCords(city);
-  });
+
+  const li = document.createElement("li");
+  li.textContent = city;
+  
+  let searchHistory = localStorage.getItem("searchHistory");
+  if (searchHistory) {
+    searchHistory = JSON.parse(searchHistory);
+    searchHistory.push(city);
+  } else {
+    searchHistory = [city];
+  }
+  localStorage.setItem("searchHistory", JSON.stringify(searchHistory));
+});
